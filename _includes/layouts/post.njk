@@ -1,0 +1,27 @@
+---
+layout: layouts/base.njk
+templateClass: tmpl-post
+---
+<head>
+  <link rel="stylesheet" href="{{ '/css/posts.css' | url }}">
+</head>
+
+<div class="post-title-card">
+  <div class="post-title-description">
+    <h1 class="post-title">{{ title }}</h1>
+    <p class="post-categoria-hora">{{ eneatipo }} - {{ categoria }} - <span>{{ date | htmlDateString }}</span></p>
+  </div>
+  <img src="{{ cover }}" alt="" class="post-cover">
+</div>
+
+
+
+{{ content | safe }}
+
+<hr class="linea-anterior-proximo">
+<ul class="seccion-anterior-proximo">
+  {%- set previousPost = collections.posts | getPreviousCollectionItem(page) %}
+  {%- if previousPost %}<li>Anterior:<br> <a href="{{ previousPost.url | url }}">{{ previousPost.data.title }}</a></li>{% endif %}
+  {%- set nextPost = collections.posts | getNextCollectionItem(page) %}
+  {%- if nextPost %}<li>Próximo:<br> <a href="{{ nextPost.url | url }}">{{ nextPost.data.title }}</a></li>{% endif %}
+</ul>

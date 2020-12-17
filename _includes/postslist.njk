@@ -1,0 +1,19 @@
+<ol reversed class="postlist" style="counter-reset: start-from {{ (postslistCounter or postslist.length) + 1 }}">
+{% for post in postslist | reverse %}
+  <li class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
+    <a href="{{ post.url | url }}">
+    <div class="post-image-place">
+      <img src="{{ post.data.cover | url }}" alt="COVER">
+    </div>
+    <div class="descripcion-postlist">
+      <p>{{ post.data.categoria }}</p>
+      <a href="{{ post.url | url }}" class="postlist-link"><h1>{{ post.data.title }}</h1></a>
+      <time class="postlist-date" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time>
+      <p class="post-explicacion">{{ post.data.description }}</p>
+      <br>
+      <a href="{{ post.url | url }}" class="leer-mas">Leer Más <span>➔</span></a>
+    </div>
+    </a>
+  </li>
+{% endfor %}
+</ol>

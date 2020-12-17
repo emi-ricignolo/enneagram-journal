@@ -1,0 +1,52 @@
+---
+layout: layouts/home.njk
+eleventyNavigation:
+  key: Home
+  order: 1
+---
+<h1>Destacado</h1>
+
+<ul class="elemento-destacado">
+{%- for destacado in collections.destacado -%}
+  <li class="destacado-item">
+    <a href="{{ destacado.url | url }}">
+    <div class="destacado-image-place">
+      <img src="{{ destacado.data.cover | url }}" alt="{{ destacado.data.title }}">
+    </div>
+    
+    <div class="descripcion-destacado">
+      <p>{{ destacado.data.categoria }}</p>
+      <a href="{{ destacado.url | url }}" class="destacado-link"><h1>{{ destacado.data.title }}</h1></a>
+      <time class="destacado-date" datetime="{{ destacado.date | htmlDateString }}">{{ destacado.date | readableDate }} / 3 minute read</time>      
+      <p class="destacado-explicacion">{{ destacado.data.description }}</p>
+      <br>
+      <a href="{{ destacado.url | url }}" class="leer-mas">Leer Más <span>➔</span></a>
+    </div>
+    </a>
+  </li>
+{%- endfor -%}
+</ul>
+
+{% set maxPosts = collections.posts.length | min(3) %}
+<h1>Últimos Posts</h1>
+
+{% set postslist = collections.posts | head(-3) %}
+{% set postslistCounter = collections.posts | length %}
+{% include "postslist.njk" %}
+
+<p class="leermore">Podés leer más post en el <a href="{{ '/posts/' | url }}">Archivo</a>.</p>
+
+<div class="informacion-place">
+  <h1>Información</h2>
+
+  <div class="informacion-destacado">
+    {% set postslist = collections.informacion | head(-3) %}
+    {% set postslistCounter = collections.informacion | length %}
+    {% include "postslist.njk" %}
+  </div>
+</div>
+
+<h1>Blog</h1>
+
+{% set postslist = collections.posts %}
+{% include "postslist.njk" %}
