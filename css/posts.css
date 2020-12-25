@@ -118,6 +118,10 @@ main img{
         width:96%;
     }
 
+    main blockquote{
+        padding:1em;
+    }
+
     .seccion-anterior-proximo{
         display:block;
     }

@@ -12,6 +12,17 @@ body{
     color: #373737;
     font-family: 'Jost', sans-serif;
     line-height: 1.6;
+    animation-name:FadeIn;
+    animation-duration:300ms;
+}
+
+@keyframes FadeIn{
+    from{
+        opacity:0
+    }
+    to{
+        opacity:1
+    }
 }
 
 a{
@@ -502,7 +513,7 @@ footer{
         border-radius:6px;
         box-shadow:none;
         padding:1em;
-        cursor:pointer;        
+        cursor:pointer;  
     }
 
     #search-item{
